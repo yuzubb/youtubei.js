@@ -1,0 +1,7 @@
+{
+  "name": "youtube-api-server",
+  "version": "1.0.0",
+  "dependencies": {
+    "youtubei.js": "latest"
+  }
+}
