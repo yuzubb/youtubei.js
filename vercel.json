@@ -1,7 +1,10 @@
 {
   "version": 2,
   "rewrites": [
-    { "source": "/api/video2/(?<id>[^/]+)", "destination": "/api/index.js?id=:id" }
+    { 
+      "source": "/api/video2/:id", 
+      "destination": "/api/index.js" 
+    }
   ],
   "functions": {
     "api/index.js": {
