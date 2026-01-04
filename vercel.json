@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/video2/(?<id>[^/]+)", "destination": "/api/index.js?id=:id" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  }
+}
