@@ -1,22 +1,22 @@
-const { Innertube, YTNodes } = require('youtubei.js');
-
-async function getBase64(url) {
-  if (!url) return '';
-  try {
-    const res = await fetch(url);
-    const buffer = await res.arrayBuffer();
-    const contentType = res.headers.get('content-type') || 'image/jpeg';
-    return `data:${contentType};base64,${Buffer.from(buffer).toString('base64')}`;
-  } catch (e) {
-    return '';
-  }
-}
-
 module.exports = async (req, res) => {
+  const { Innertube, YTNodes } = await import('youtubei.js');
+
   const { id: fullId, depth: qDepth, token: qToken } = req.query;
 
   if (!fullId) {
     return res.status(400).json({ error: 'Missing video ID' });
+  }
+
+  async function getBase64(url) {
+    if (!url) return '';
+    try {
+      const imgRes = await fetch(url);
+      const buffer = await imgRes.arrayBuffer();
+      const contentType = imgRes.headers.get('content-type') || 'image/jpeg';
+      return `data:${contentType};base64,${Buffer.from(buffer).toString('base64')}`;
+    } catch (e) {
+      return '';
+    }
   }
 
   let videoId = fullId;
